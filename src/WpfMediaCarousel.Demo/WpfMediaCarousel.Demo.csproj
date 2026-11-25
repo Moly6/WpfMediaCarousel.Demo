@@ -8,7 +8,7 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="../../lib/WpfMediaCarousel/src/WpfMediaCarousel/WpfMediaCarousel.csproj" />
-    <None Update="Assets/*.png" CopyToOutputDirectory="PreserveNewest" />
+    <PackageReference Include="WpfMediaCarousel" Version="1.0.0" />
+    <None Update="Assets/*" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>
