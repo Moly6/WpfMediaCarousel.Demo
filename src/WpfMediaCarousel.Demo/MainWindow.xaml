@@ -1,11 +1,16 @@
-<Window x:Class="WpfMediaCarousel.Demo.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:carousel="clr-namespace:MediaCarousel.Controls;assembly=WpfMediaCarousel"
-        Title="WpfMediaCarousel | Demo"
-        Width="1120" Height="760" MinWidth="800" MinHeight="600"
-        WindowStartupLocation="CenterScreen"
-        Background="#0B1020" Foreground="#ECF3FF">
+<Window
+    x:Class="WpfMediaCarousel.Demo.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:carousel="clr-namespace:MediaCarousel.Controls;assembly=WpfMediaCarousel"
+    Title="WpfMediaCarousel | Demo"
+    Width="1120"
+    Height="760"
+    MinWidth="800"
+    MinHeight="600"
+    Background="#0B1020"
+    Foreground="#ECF3FF"
+    WindowStartupLocation="CenterScreen">
     <Grid Margin="32">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -15,29 +20,43 @@
         </Grid.RowDefinitions>
 
         <StackPanel Margin="0,0,0,22">
-            <TextBlock Text="WPF MEDIA CAROUSEL" FontSize="13" FontWeight="SemiBold"
-                       Foreground="#65D7C1" />
-            <TextBlock Text="A carousel for image and video." FontSize="30"
-                       FontWeight="Bold" Margin="0,8,0,4" />
-            <TextBlock Text="Use the arrows or let the slides advance automatically."
-                       FontSize="15" Foreground="#AAB8D0" />
+            <TextBlock
+                FontSize="13"
+                FontWeight="SemiBold"
+                Foreground="#65D7C1"
+                Text="WPF MEDIA CAROUSEL" />
+            <TextBlock
+                Margin="0,8,0,4"
+                FontSize="30"
+                FontWeight="Bold"
+                Text="A carousel for image and video." />
+            <TextBlock
+                FontSize="15"
+                Foreground="#AAB8D0"
+                Text="Use the arrows or let the slides advance automatically." />
         </StackPanel>
 
-        <Border Grid.Row="1" CornerRadius="18" BorderBrush="#263451"
-                BorderThickness="1" Background="#111B2D" Padding="8">
-            <carousel:MediaCarouselControl x:Name="CarouselControl"
-                ItemsSource="{Binding MediaItems}"
+        <Border
+            Grid.Row="1"
+            Padding="8"
+            Background="#111B2D"
+            BorderBrush="#263451"
+            BorderThickness="1"
+            CornerRadius="18">
+            <carousel:MediaCarouselControl
+                x:Name="CarouselControl"
+                Background="#111B2D"
+                BackgroundOverlayOpacity="0.6"
+                BlurRadius="28"
+                EnableBlurBackground="True"
                 ImageDuration="0:0:6"
                 IsAutoPlay="True"
-                IsMuted="True"
-                ShowNavigationButtons="True"
-                ShowIndicators="True"
-                PlaceholderImage="{Binding VideoPlaceholder}"
+                IsMuted="False"
+                ItemsSource="{Binding MediaItems}"
                 PlaceholderFadeDuration="0:0:0.35"
-                EnableBlurBackground="True"
-                BlurRadius="28"
-                BackgroundOverlayOpacity="0.25"
-                Background="#111B2D" />
+                ShowIndicators="True"
+                ShowNavigationButtons="True" />
+            <!--  PlaceholderImage="{Binding VideoPlaceholder}"  -->
         </Border>
 
         <Grid Grid.Row="2" Margin="2,18,2,0">
@@ -47,16 +66,30 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Content="Previous" Padding="18,10" Margin="0,0,10,0"
-                    Command="{Binding PreviousCommand, ElementName=CarouselControl}" />
-            <Button Grid.Column="1" Content="Next" Padding="18,10"
-                    Command="{Binding NextCommand, ElementName=CarouselControl}" />
-            <TextBlock Grid.Column="3" VerticalAlignment="Center" Foreground="#AAB8D0"
-                       Text="{Binding SelectedIndex, ElementName=CarouselControl, StringFormat=Slide {0}}" />
+            <Button
+                Grid.Column="0"
+                Margin="0,0,10,0"
+                Padding="18,10"
+                Command="{Binding PreviousCommand, ElementName=CarouselControl}"
+                Content="Previous" />
+            <Button
+                Grid.Column="1"
+                Padding="18,10"
+                Command="{Binding NextCommand, ElementName=CarouselControl}"
+                Content="Next" />
+            <TextBlock
+                Grid.Column="3"
+                VerticalAlignment="Center"
+                Foreground="#AAB8D0"
+                Text="{Binding SelectedIndex, ElementName=CarouselControl, StringFormat=Slide {0}}" />
         </Grid>
 
-        <TextBlock Grid.Row="3" Margin="2,14,2,0" TextWrapping="Wrap"
-                   Foreground="#73829C" FontSize="12">
+        <TextBlock
+            Grid.Row="3"
+            Margin="2,14,2,0"
+            FontSize="12"
+            Foreground="#73829C"
+            TextWrapping="Wrap">
             Image slides are included locally. The Big Buck Bunny video slide uses an online sample and needs an internet connection. Video © Blender Foundation, CC BY 3.0.
         </TextBlock>
     </Grid>
